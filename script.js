@@ -89,7 +89,18 @@ function setupModalCloseHandler() {
  */
 function initTaskBoard() {
   clearExistingTasks();
-  renderTasks(initialTasks);
+
+  let userDataString = localStorage.getItem("userData");
+  let userData;
+
+  if (userDataString) {
+    userData = JSON.parse(userDataString);
+  } else {
+    userData = initialTasks;
+    localStorage.setItem("userData", JSON.stringify(initialTasks));
+  }
+
+  renderTasks(userData);
   setupModalCloseHandler();
 }
 
