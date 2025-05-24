@@ -106,3 +106,17 @@ function initTaskBoard() {
 
 // Wait until DOM is fully loaded
 document.addEventListener("DOMContentLoaded", initTaskBoard);
+
+function setupAddNewTaskModalHandler() {
+  const addNewTaskBtn = document.getElementById("add-btn");
+  const addNewTaskModal = document.getElementById("add-new-task-modal");
+
+  addNewTaskBtn.addEventListener("click", () => {
+    addNewTaskModal.showModal();
+  });
+
+  const closeBtn = addNewTaskModal.querySelector(".close-btn");
+  closeBtn.addEventListener("click", () => {
+    addNewTaskModal.close();
+  });
+}

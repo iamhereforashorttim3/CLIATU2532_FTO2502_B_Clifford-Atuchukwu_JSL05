@@ -105,5 +105,33 @@
         </select>
       </form>
     </dialog>
+
+    <dialog id="add-new-task-modal">
+      <form method="dialog" id="add-new-task-from">
+        <div class="new-modal-header">
+          <h3>Add New Task</h3>
+          <button type="button" class="close-btn" id="close-modal-btn">
+            &times;
+          </button>
+        </div>
+
+        <label for="enter-title">Title</label>
+        <input type="text" id="title-enter" name="new-title" required />
+
+        <label for="enter-desc">Description</label>
+        <textarea
+          id="entering-description"
+          name="new-description"
+          rows="4"
+        ></textarea>
+
+        <label for="enter-new-status">Status</label>
+        <select id="task-status" name="status" required>
+          <option value="todo">todo</option>
+          <option value="doing">doing</option>
+          <option value="done">done</option>
+        </select>
+      </form>
+    </dialog>
   </body>
 </html>
