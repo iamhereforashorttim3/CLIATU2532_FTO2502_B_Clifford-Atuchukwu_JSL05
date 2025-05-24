@@ -400,3 +400,22 @@ form select {
     padding: 24px;
   }
 }
+
+/* Add button */
+#add-btn {
+  color: white;
+  background-color: #635fc7;
+  border-radius: 24px;
+  height: 6vh;
+  width: 19vh;
+  font-size: 15px;
+  font-weight: 700;
+  border-color: #635fc7;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#add-btn:hover {
+  filter: brightness(90%);
+}
