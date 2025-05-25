@@ -1,3 +1,6 @@
+/**
+ * This holds the initial tasks and exports them into the localStorage
+ */
 export const initialTasks = [
   {
     id: 1,
