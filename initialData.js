@@ -40,5 +40,3 @@ export const initialTasks = [
     status: "done",
   },
 ];
-
-localStorage.setItem("userData", JSON.stringify(initialTasks));
