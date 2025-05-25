@@ -123,13 +123,23 @@
         </div>
 
         <label for="enter-title">Title</label>
-        <input type="text" id="title-enter" name="new-title" required />
+        <div class="input-group">
+          <input
+            type="text"
+            id="title-enter"
+            name="new-title"
+            required
+            placeholder="e.g Task one"
+          />
+        </div>
 
         <label for="enter-desc">Description</label>
         <textarea
           id="entering-description"
           name="new-description"
           rows="4"
+          placeholder="e.g This task is about completeting the task and writing a description for the task
+          and any future task for that matter. Always write down your descriptions"
         ></textarea>
 
         <label for="enter-new-status">Status</label>
