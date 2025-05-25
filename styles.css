@@ -419,3 +419,23 @@ form select {
 #add-btn:hover {
   filter: brightness(90%);
 }
+
+.plus-text {
+  display: none;
+}
+
+@media screen and (max-width: 576px) {
+  .normal-text {
+    display: none;
+  }
+
+  .plus-text {
+    display: inline;
+  }
+
+  #add-btn {
+    height: 4vh;
+    width: 4vh;
+    font-size: 12px;
+  }
+}
