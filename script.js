@@ -77,7 +77,7 @@ function openTaskModal(task) {
  */
 function setupModalCloseHandler() {
   const modal = document.getElementById("task-modal");
-  const closeBtn = document.getElementById("close-modal-btn");
+  const closeBtn = document.getElementById("task-close-btn");
 
   closeBtn.addEventListener("click", () => {
     modal.close();
@@ -87,6 +87,23 @@ function setupModalCloseHandler() {
 /**
  * Initializes the task board and modal handlers.
  */
+
+function setupAddNewTaskModalHandler() {
+  const addNewTaskBtn = document.getElementById("add-btn");
+  const addNewTaskModal = document.getElementById("add-new-task-modal");
+
+  addNewTaskBtn.addEventListener("click", () => {
+    addNewTaskModal.showModal();
+  });
+
+  const closeBtn = addNewTaskModal.querySelector(".add-close-btn");
+  closeBtn.addEventListener("click", () => {
+    addNewTaskModal.close();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initTaskBoard);
+
 function initTaskBoard() {
   clearExistingTasks();
 
@@ -102,21 +119,41 @@ function initTaskBoard() {
 
   renderTasks(userData);
   setupModalCloseHandler();
+  setupAddNewTaskModalHandler();
+  setupCreateTaskHandler();
 }
 
-// Wait until DOM is fully loaded
-document.addEventListener("DOMContentLoaded", initTaskBoard);
+function setupCreateTaskHandler() {
+  const form = document.getElementById("add-new-task-form");
+  const titleInput = document.getElementById("title-enter");
+  const descInput = document.getElementById("entering-description");
+  const statusSelect = document.getElementById("add-task-status");
+  const modal = document.getElementById("add-new-task-modal");
 
-function setupAddNewTaskModalHandler() {
-  const addNewTaskBtn = document.getElementById("add-btn");
-  const addNewTaskModal = document.getElementById("add-new-task-modal");
+  const createTaskBtn = document.getElementById("create-task");
+  createTaskBtn.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  addNewTaskBtn.addEventListener("click", () => {
-    addNewTaskModal.showModal();
-  });
+    const newTask = {
+      id: Date.now(),
+      title: titleInput.value.trim(),
+      description: descInput.value.trim(),
+      status: statusSelect.value,
+    };
 
-  const closeBtn = addNewTaskModal.querySelector(".close-btn");
-  closeBtn.addEventListener("click", () => {
-    addNewTaskModal.close();
+    if (!newTask.title) {
+      alert("Please Enter a title");
+      return;
+    }
+
+    const currentData = JSON.parse(localStorage.getItem("userData")) || [];
+    currentData.push(newTask);
+    localStorage.setItem("userData", JSON.stringify(currentData));
+
+    clearExistingTasks();
+    renderTasks(currentData);
+
+    modal.close();
+    form.reset();
   });
 }
